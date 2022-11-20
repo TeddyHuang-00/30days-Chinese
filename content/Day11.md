@@ -1,13 +1,15 @@
 # st.multiselect
 
-`st.multiselect` displays a multiselect widget.
+`st.multiselect` 显示一个多选组件。
 
-## Demo app
+## 示例应用
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/st.multiselect/)
 
-## Code
-Here's how to use `st.multiselect`:
+## 代码
+
+以下展示了如何使用 `st.multiselect`：
+
 ```python
 import streamlit as st
 
@@ -21,18 +23,21 @@ options = st.multiselect(
 st.write('You selected:', options)
 ```
 
-## Line-by-line explanation
-The very first thing to do when creating a Streamlit app is to start by importing the `streamlit` library as `st` like so:
+## 逐行解释
+
+创建 Streamlit 应用时要做的第一件事就是将 `streamlit` 库导入为 `st`：
+
 ```python
 import streamlit as st
 ```
 
-This is followed by creating a header text for the app:
+然后紧跟着的是应用的标题文字：
+
 ```python
 st.header('st.multiselect')
 ```
 
-Next, we're going to use the `st.multiselect` widget to accept input where users will be able to select one or more colors of there choice.
+接下来我们用 `st.multiselect` 组件来接收来自用户的一个或多个选择的颜色。
 
 ```python
 options = st.multiselect(
@@ -41,10 +46,12 @@ options = st.multiselect(
      ['Yellow', 'Red'])
 ```
 
-Finally, we'll write out the selected colors:
+最后我们将所选颜色显示出来：
+
 ```python
 st.write('You selected:', options)
 ```
 
-## Further reading
+## 延伸阅读
+
 - [`st.multiselect`](https://docs.streamlit.io/library/api-reference/widgets/st.multiselect)

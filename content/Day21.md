@@ -1,13 +1,15 @@
 # st.progress
 
-`st.progress` displays a progress bar that updates graphically as the iteration progresses.
+`st.progress` 显示一个随着循环进度更新的进度条。
 
-## Demo app
+## 示例应用
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/st.progress/)
 
-## Code
-Here's how to use `st.progress`:
+## 代码
+
+以下展示了如何使用 `st.progress`：
+
 ```python
 import streamlit as st
 import time
@@ -26,25 +28,30 @@ for percent_complete in range(100):
 st.balloons()
 ```
 
-## Line-by-line explanation
-The very first thing to do when creating a Streamlit app is to start by importing the `streamlit` library as `st` along with the `time` library like so:
+## 逐行解释
+
+创建 Streamlit 应用时要做的第一件事就是将 `streamlit` 库导入为 `st`，并且导入要用到的 `time` 库：
+
 ```python
 import streamlit as st
 import time
 ```
 
-Next, we create a title text for the app:
+接下来为应用创建标题文字：
+
 ```python
 st.title('st.progress')
 ```
 
-An **About box** is created using `st.expander` and description is displayed via `st.write`:
+用 `st.expander` 创建一个 **About box**，在其中用 `st.write`显示描述信息：
+
 ```python
 with st.expander('About this app'):
      st.write('You can now display the progress of your calculations in a Streamlit app with the `st.progress` command.')
 ```
 
-Finally, we define a progress bar and instantiate it with a starting value of `0`. Then, a `for` loop will iterate from `0` until `100` is reached. In each iteration, we use `time.sleep(0.05)` to allow the app to wait for `0.05` before adding a value of `1` to the `my_bar` progress bar and in doing so the graphical display of the bar increases with each iteration.
+最后，我们定义一个进度条，并且以 0 为初值将其实例化。然后一个 `for` 循环将从 `0` 遍历至 `100`。在每个循环中，我们用 `time.sleep(0.05)` 来让应用等待 `0.05` 秒再令 `my_bar` 进度条数值加 `1`，这样能够以图像的形式显示出进度条随每个循环增长。
+
 ```python
 my_bar = st.progress(0)
 
@@ -55,5 +62,6 @@ for percent_complete in range(100):
 st.balloons()
 ```
 
-## Further reading
+## 延伸阅读
+
 - [`st.progress`](https://docs.streamlit.io/library/api-reference/status/st.progress)

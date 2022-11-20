@@ -1,22 +1,26 @@
 # st.selectbox
 
-`st.selectbox` allows the display of a select widget.
+`st.selectbox` 显示一个选择组件
 
-## What we're building?
+## 我们要做什么？
 
-A simple app that asks the user what their favorite color is.
+我们今天要搭建一个简单的应用，询问用户最喜欢的颜色。
 
-Flow of the app:
-1. User selects a color
-2. App prints out the selected color
+应用的流程：
 
-## Demo app
-The deployed Streamlit app should look something like the one shown in the below link: 
+1. 用户选择一个颜色
+2. 显示用户选择的颜色
+
+## 示例应用
+
+我们将要部署的 Streamlit 应用应该看起来和下面链接中的这个差不多：
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/st.selectbox/)
 
-## Code
-Here's the code to implement the above mentioned app:
+## 代码
+
+以下是实现上述应用的代码：
+
 ```python
 import streamlit as st
 
@@ -29,35 +33,43 @@ option = st.selectbox(
 st.write('Your favorite color is ', option)
 ```
 
-## Line-by-line explanation
-The very first thing to do when creating a Streamlit app is to start by importing the `streamlit` library as `st` like so:
+## 逐行解释
+
+创建 Streamlit 应用时要做的第一件事就是将 `streamlit` 库导入为 `st`：
+
 ```python
 import streamlit as st
 ```
 
-This is followed by creating a header text for the app:
+然后紧跟着的是应用的标题文字：
+
 ```python
 st.header('st.selectbox')
 ```
 
-Next, we will create a variable called `option` that will accept user input in the form of a **select** input widget via the `st.selectbox()` command.
+接下来，我们创建一个名为 `option` 的变量来存放来自 `st.selectbox()` 命令的用户**选择**输入。
 
 ```python
 option = st.selectbox(
      'What is your favorite color?',
      ('Blue', 'Red', 'Green'))
 ```
-As we can see from the above code box, the `st.selectbox()` command accepts 2 input arguments:
-1. The text that goes above the select widget, i.e. `'What is your favorite color?'`
-2. The possible values to select from `('Blue', 'Red', 'Green')`
 
-Finally, we'll print out the selected color as follows:
+从上面的代码框可见，`st.selectbox()` 命令接收两个输入参数：
+
+1. 组件上方的标题文字，也就是这里的 `'What is your favorite color?'`
+2. 备选的数值，此处为 `('Blue', 'Red', 'Green')`
+
+最后，我们用如下命令显示用户所选的颜色。
+
 ```python
 st.write('Your favorite color is ', option)
 ```
 
-## Next steps
-Now that you have created the Streamlit app locally, it's time to deploy it to [Streamlit Community Cloud](https://streamlit.io/cloud).
+## 接下来做什么？
 
-## References 
-More about [`st.selectbox`](https://docs.streamlit.io/library/api-reference/widgets/st.selectbox)
+现在你已经在本地创建好了 Streamlit 应用，是时候将其部署到 [Streamlit Community Cloud](https://streamlit.io/cloud) 了。
+
+## 参考资料
+
+更多有关 [`st.selectbox`](https://docs.streamlit.io/library/api-reference/widgets/st.selectbox) 的说明。

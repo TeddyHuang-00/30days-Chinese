@@ -1,13 +1,15 @@
 # st.secrets
 
-`st.secrets` allows you to store confidential information such as API keys, database passwords or other credentials.
+`st.secrets` 使你可以存储一些秘密信息，例如 API 密钥、数据库密码等其他验证信息。
 
-## Demo app
+## 示例应用
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/st.secrets/)
 
-## Code
-Here's how to use `st.secrets`:
+## 代码
+
+以下展示了如何使用 `st.secrets`：
+
 ```python
 import streamlit as st
 
@@ -16,26 +18,31 @@ st.title('st.secrets')
 st.write(st.secrets['message'])
 ```
 
-## Line-by-line explanation
-The very first thing to do when creating a Streamlit app is to start by importing the `streamlit` library as `st` like so:
+## 逐行解释
+
+创建 Streamlit 应用时要做的第一件事就是将 `streamlit` 库导入为 `st`：
+
 ```python
 import streamlit as st
 ```
 
-This is followed by creating a title text for the app:
+紧跟着的是为应用创建一个标题：
+
 ```python
 st.title('st.secrets')
 ```
 
-Finally, we'll be displaying the stored secrets:
+最后我们显示存储的秘密：
+
 ```python
 st.write(st.secrets['message'])
 ```
 
-It should be noted that, secrets can be stored in Streamlit Community Cloud as shown in the screenshots shown below.
+需要注意的是，你可以通过如下截图所示方法，将秘密存入 Streamlit Community Cloud配置中。
 
-If working locally, they can be stored in `.streamlit/secrets.toml`, but make sure to avoid uploading this to a GitHub repo when deploying the app.
+如果在本地运行程序的话，你也可以将秘密存入 `.streamlit/secrets.toml` 文件内，但是切记避免在部署应用时将此文件上传至 GitHub 仓库。
 
-## Further reading
-- [Add secrets to your Streamlit apps](https://blog.streamlit.io/secrets-in-sharing-apps/)
-- [Secrets management](https://docs.streamlit.io/streamlit-cloud/get-started/deploy-an-app/connect-to-data-sources/secrets-management)
+## 延伸阅读
+
+- [向你的 Streamlit 应用添加秘密](https://blog.streamlit.io/secrets-in-sharing-apps/)
+- [管理秘密](https://docs.streamlit.io/streamlit-cloud/get-started/deploy-an-app/connect-to-data-sources/secrets-management)

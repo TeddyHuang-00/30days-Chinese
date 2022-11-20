@@ -1,13 +1,15 @@
 # st.checkbox
 
-`st.checkbox` displays a checkbox widget.
+`st.checkbox` 显示一个勾选组件。
 
-## Demo app
+## 示例应用
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/st.checkbox/)
 
-## Code
-Here's how to use `st.checkbox`:
+## 代码
+
+以下展示了如何使用 `st.checkbox`：
+
 ```python
 import streamlit as st
 
@@ -21,48 +23,55 @@ cola = st.checkbox('Cola')
 
 if icecream:
      st.write("Great! Here's some more 🍦")
-    
-if coffee: 
+
+if coffee:
      st.write("Okay, here's some coffee ☕")
 
 if cola:
      st.write("Here you go 🥤")
 ```
 
-## Line-by-line explanation
-The very first thing to do when creating a Streamlit app is to start by importing the `streamlit` library as `st` like so:
+## 逐行解释
+
+创建 Streamlit 应用时要做的第一件事就是将 `streamlit` 库导入为 `st`：
+
 ```python
 import streamlit as st
 ```
 
-This is followed by creating a header text for the app:
+然后紧跟着的是应用的标题文字：
+
 ```python
 st.header('st.checkbox')
 ```
 
-Next, we're going to ask a question via `st.write':
+接下来我们用 `st.write` 显示一个问题（“您想要点什么”）：
+
 ```python
 st.write ('What would you like to order?')
 ```
 
-We're then going to provide some menu items to tick on:
+然后我们提供几个菜单选项可供勾选：
+
 ```python
 icecream = st.checkbox('Ice cream')
 coffee = st.checkbox('Coffee')
 cola = st.checkbox('Cola')
 ```
 
-Finally, we're going to print custom text depending on which checkbox was ticked on:
+最后我们根据用户的勾选来输出不同的文字：
+
 ```python
 if icecream:
      st.write("Great! Here's some more 🍦")
-    
-if coffee: 
+
+if coffee:
      st.write("Okay, here's some coffee ☕")
 
 if cola:
      st.write("Here you go 🥤")
-```  
+```
 
-## Further reading
+## 延伸阅读
+
 - [`st.checkbox`](https://docs.streamlit.io/library/api-reference/widgets/st.checkbox)

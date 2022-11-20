@@ -1,24 +1,26 @@
 # streamlit-shap
 
-[`streamlit-shap`](https://github.com/snehankekre/streamlit-shap) is a Streamlit component that provides a wrapper to display [SHAP](https://github.com/slundberg/shap) plots in [Streamlit](https://streamlit.io/). 
+[`streamlit-shap`](https://github.com/snehankekre/streamlit-shap) 是一个提供了在 [Streamlit](https://streamlit.io/) 中显示 [SHAP](https://github.com/slundberg/shap) 图表的功能的 Streamlit 组件。
 
-The library is developed by our in-house staff [Snehan Kekre](https://github.com/snehankekre) who also maintains the [Streamlit Documentation](https://docs.streamlit.io/) website.
+这个库由我们团队内的成员 [Snehan Kekre](https://github.com/snehankekre) 所开发，他也负责维护 [Streamlit 文档](https://docs.streamlit.io/) 网页。
 
-Firstly, install Streamlit (of course!) then pip install the `streamlit-shap` library:
+首先，我们得安装 Streamlit （显然），然后使用 pip 安装 `streamlit-shap` 库：
+
 ```bash
 pip install streamlit
 pip install streamlit-shap
 ```
 
-There are also other prerequisite libraries to install (e.g. `matplotlib`, `pandas`, `scikit-learn` and `xgboost`) if you haven't yet done so.
+还有一些其他的依赖库需要安装（例如 `matplotlib`、`pandas`、`scikit-learn` 和 `xgboost`），如果还没装的话则需要安装一下。
 
-
-## Demo app
+## 示例应用
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/streamlit-shap/)
 
-## Code
-Here's how to use `streamlit-shap`:
+## 代码
+
+以下展示了如何使用 `streamlit-shap`：
+
 ```python
 import streamlit as st
 from streamlit_shap import st_shap
@@ -53,7 +55,7 @@ def load_model(X, y):
 st.title("`streamlit-shap` for displaying SHAP plots in a Streamlit app")
 
 with st.expander('About the app'):
-    st.markdown('''[`streamlit-shap`](https://github.com/snehankekre/streamlit-shap) is a Streamlit component that provides a wrapper to display [SHAP](https://github.com/slundberg/shap) plots in [Streamlit](https://streamlit.io/). 
+    st.markdown('''[`streamlit-shap`](https://github.com/snehankekre/streamlit-shap) is a Streamlit 组件 that provides a wrapper to display [SHAP](https://github.com/slundberg/shap) plots in [Streamlit](https://streamlit.io/).
                     The library is developed by our in-house staff [Snehan Kekre](https://github.com/snehankekre) who also maintains the [Streamlit Documentation](https://docs.streamlit.io/) website.
                 ''')
 
@@ -69,7 +71,7 @@ with st.expander('y'):
     st.dataframe(y)
 
 st.header('SHAP output')
- 
+
 # train XGBoost model
 model = load_model(X, y)
 
@@ -92,8 +94,10 @@ with st.expander('Force plot'):
     st_shap(shap.force_plot(explainer.expected_value, shap_values[:1000,:], X_display.iloc[:1000,:]), height=400, width=1000)
 ```
 
-## Line-by-line explanation
-The very first thing to do when creating a Streamlit app is to start by importing the `streamlit` library as `st` like so:
+## 逐行解释
+
+创建 Streamlit 应用时要做的第一件事就是将 `streamlit` 库导入为 `st`：
+
 ```python
 import streamlit as st
 from streamlit_shap import st_shap
@@ -104,19 +108,22 @@ import numpy as np
 import pandas as pd
 ```
 
-Next, we'll set the page layout to be wide such that contents in the Streamlit app can spread the full page width.
+接下来，更改页面布局为宽屏模式，让 Streamlit 应用内容占满整个页宽。
+
 ```python
 st.set_page_config(layout="wide")
 ```
 
-Then, we'll load in a dataset from the `shap` library:
+然后我们载入 `shap` 库中提供的数据库：
+
 ```python
 @st.experimental_memo
 def load_data():
     return shap.datasets.adult()
 ```
 
-Subsequently, we'll definite a function called `load_model` for taking in the `X, y` matrix pair as input, perform data splitting to train/test sets, constructing a `DMatrix` and build an XGBoost model.
+随后我们需要定义一个 `load_model` 函数，用于接收 `X, y` 两个矩阵作为输入，将数据分割为训练集与测试集，构建一个 `DMatrix` 对象然后搭建 XGBoost 模型。
+
 ```python
 @st.experimental_memo
 def load_model(X, y):
@@ -135,20 +142,23 @@ def load_model(X, y):
     return model
 ```
 
-The title of the Streamlit app is then displayed:
+然后我们显示这个 Streamlit 应用的标题：
+
 ```python
 st.title("`streamlit-shap` for displaying SHAP plots in a Streamlit app")
 ```
 
-An about expander box is implemented to provide details of the app:
+加入一个“有关”拓展框来提供一些应用有关的细节信息：
+
 ```python
 with st.expander('About the app'):
-    st.markdown('''[`streamlit-shap`](https://github.com/snehankekre/streamlit-shap) is a Streamlit component that provides a wrapper to display [SHAP](https://github.com/slundberg/shap) plots in [Streamlit](https://streamlit.io/). 
+    st.markdown('''[`streamlit-shap`](https://github.com/snehankekre/streamlit-shap) is a Streamlit component that provides a wrapper to display [SHAP](https://github.com/slundberg/shap) plots in [Streamlit](https://streamlit.io/).
                     The library is developed by our in-house staff [Snehan Kekre](https://github.com/snehankekre) who also maintains the [Streamlit Documentation](https://docs.streamlit.io/) website.
                 ''')
 ```
 
-Here, we'll display the header text along with expander box of the `X` and `y` variables of the Input data:
+以下我们显示一个次标题，以及展示输入数据中 `X` 和 `y` 变量的拓展框：
+
 ```python
 st.header('Input data')
 X,y = load_data()
@@ -162,12 +172,14 @@ with st.expander('y'):
     st.dataframe(y)
 ```
 
-Here, we'll display the header text for the forthcoming SHAP output:
+接下来我们为此后的 SHAP 输出显示一个次标题：
+
 ```python
 st.header('SHAP output')
 ```
 
-The XGBoost model is then built by using the `load_model` function that was just implemented above. Finally, 
+然后用此前实现的 `load_model` 函数来创建 XGBoost 模型：
+
 ```python
 # train XGBoost model
 X,y = load_data()
@@ -176,7 +188,8 @@ X_display,y_display = shap.datasets.adult(display=True)
 model = load_model(X, y)
 ```
 
-Here, we'll compute the SHAP values, which are then used to create the Waterfall and Beeswarm plots.
+这里我们将计算 SHAP 值，然后将其用于绘制 Waterfall 图和 Beeswarm 图。
+
 ```python
 # compute SHAP values
 explainer = shap.Explainer(model, X)
@@ -188,7 +201,8 @@ with st.expander('Beeswarm plot'):
     st_shap(shap.plots.beeswarm(shap_values), height=300)
 ```
 
-Finally, the Tree SHAP algorithms is used to explain the output of ensemble tree models via the `shap.TreeExplainer` command and visualized via the `shap.force_plot` command:
+最后的最后，用 `shap.TreeExplainer` 调用 Tree SHAP 算法来解释生成的决策树模型，并且用 `shap.force_plot` 对其进行可视化：
+
 ```python
 explainer = shap.TreeExplainer(model)
 shap_values = explainer.shap_values(X)
@@ -200,6 +214,7 @@ with st.expander('Force plot'):
     st_shap(shap.force_plot(explainer.expected_value, shap_values[:1000,:], X_display.iloc[:1000,:]), height=400, width=1000)
 ```
 
-## Further reading
+## 延伸阅读
+
 - [`streamlit-shap`](https://github.com/snehankekre/streamlit-shap)
 - [SHAP](https://github.com/slundberg/shap)

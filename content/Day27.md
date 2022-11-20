@@ -1,52 +1,52 @@
-# Build a draggable and resizable dashboard with Streamlit Elements
+# 使用 Streamlit Elements 搭建一个可拖拽放缩的仪表盘
 
-Streamlit Elements is a third-party component made by [okld](https://github.com/okld) that gives you the tools to compose beautiful applications and dashboards with Material UI widgets, Monaco editor (Visual Studio Code), Nivo charts, and more.
+Streamlit Elements 是一个由 [okld](https://github.com/okld) 制作的第三方组件，能够让你用 Material UI 组件、Monaco 编辑器（Visual Studio Code）和 Nivo charts 等等搭建出精美的应用和仪表盘。
 
-## How to use?
+## 如何使用？
 
-### Installation
+### 安装
 
-The first step is to install Streamlit Elements in your environment:
+第一步要做的就是将 Streamlit Elements 安装到你的环境中：
 
 ```bash
 pip install streamlit-elements==0.1.*
 ```
 
-It is recommended to pin the version to `0.1.*`, as future versions might introduce breaking API changes.
+我们推荐你将其版本固定到 `0.1.*`，因为此后的版本中可能引入变动破坏 API 向后兼容性。
 
-### Usage
+### 用法
 
-You can refer to [Streamlit Elements README](https://github.com/okld/streamlit-elements#getting-started) for an in-depth usage guide.
+你可以参考 [Streamlit Elements README](https://github.com/okld/streamlit-elements#getting-started) 中给出的深度用法指南。
 
-## What are we building?
+## 我们要做什么？
 
-The goal of today's challenge is to create a dashboard composed of three Material UI cards:
+今天挑战的目标是做一个包含三个 Material UI 卡片的仪表盘：
 
-- A first card with a Monaco code editor to input some data ;
-- A second card to display that data in a Nivo Bump chart ;
-- A third card to show a YouTube video URL defined with a `st.text_input`.
+- 第一个卡片包含 Monaco 编辑器用于输入数据
+- 第二个卡片用 Nivo Bump 图显示输入的数据
+- 第三个卡片用来显示 `st.text_input` 指定连接的 YouTube 视频
 
-You can use data generated from Nivo Bump demo there, in 'data' tab: https://nivo.rocks/bump/.
+你可以使用 Nivo Bump 示例中“data”标签页下生成的数据：https://nivo.rocks/bump/.
 
-## Demo app
+## 示例应用
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/okld/streamlit-elements-demo/main)
 
-## Code with line-by-line explanation
+## 代码 with line-by-line explanation
 
 ```python
-# First, we will need the following imports for our application.
+# 首先，我们需要给应用导入以下的库
 
 import json
 import streamlit as st
 from pathlib import Path
 
-# As for Streamlit Elements, we will need all these objects.
-# All available objects and there usage are listed there: https://github.com/okld/streamlit-elements#getting-started
+# 然后我们需要 Streamlit Elements 中的这些对象
+# 有关全部对象及其用法的说明请见：https://github.com/okld/streamlit-elements#getting-started
 
 from streamlit_elements import elements, dashboard, mui, editor, media, lazy, sync, nivo
 
-# Change page layout to make the dashboard take the whole page.
+# 更改页面布局，让仪表盘占据整个页宽
 
 st.set_page_config(layout="wide")
 
@@ -56,109 +56,109 @@ with st.sidebar:
     st.write("Build a draggable and resizable dashboard with Streamlit Elements.")
     st.write("---")
 
-    # Define URL for media player.
+    # 媒体播放器所用的 URL
     media_url = st.text_input("Media URL", value="https://www.youtube.com/watch?v=vIQQR_yq-8I")
 
-# Initialize default data for code editor and chart.
+# 初始化代码编辑器和图表的默认数据
 #
-# For this tutorial, we will need data for a Nivo Bump chart.
-# You can get random data there, in tab 'data': https://nivo.rocks/bump/
+# 在这篇教程中，我们会用到 Nivo Bump 图的数据
+# 你能在“data”标签页下获取随机的数据：https://nivo.rocks/bump/
 #
-# As you will see below, this session state item will be updated when our
-# code editor change, and it will be read by Nivo Bump chart to draw the data.
+# 如下所示，当代码编辑器发生更改时，会话状态就会被更新
+# 然后会被读入至 Nivo Bump 图并将其绘制出来
 
 if "data" not in st.session_state:
     st.session_state.data = Path("data.json").read_text()
 
-# Define a default dashboard layout.
-# Dashboard grid has 12 columns by default.
+# 定义默认的仪表盘布局
+# 默认情况下仪表盘会分为 12 列
 #
-# For more information on available parameters:
+# 更多可用参数见：
 # https://github.com/react-grid-layout/react-grid-layout#grid-item-props
 
 layout = [
-    # Editor item is positioned in coordinates x=0 and y=0, and takes 6/12 columns and has a height of 3.
+    # 编辑器对象定位在坐标 x=0 且 y=0 处，占据 12 列中的 6 列以及 3 行
     dashboard.Item("editor", 0, 0, 6, 3),
-    # Chart item is positioned in coordinates x=6 and y=0, and takes 6/12 columns and has a height of 3.
+    # 图表对象定位在坐标 x=6 且 y=0 处，占据 12 列中的 6 列以及 3 行
     dashboard.Item("chart", 6, 0, 6, 3),
-    # Media item is positioned in coordinates x=0 and y=3, and takes 6/12 columns and has a height of 4.
-    dashboard.Item("media", 0, 2, 12, 4),
+    # 媒体播放器对象定位在坐标 x=0 且 y=3 处，占据 12 列中的 6 列以及 4 行
+    dashboard.Item("media", 0, 3, 12, 4),
 ]
 
-# Create a frame to display elements.
+# 创建显示各元素的框体
 
 with elements("demo"):
 
-    # Create a new dashboard with the layout specified above.
+    # 使用以上指定的布局创建新仪表盘
     #
-    # draggableHandle is a CSS query selector to define the draggable part of each dashboard item.
-    # Here, elements with a 'draggable' class name will be draggable.
+    # draggableHandle 是一个 CSS 查询选择器，定义了仪表盘中可拖拽的部分
+    # 以下为将带 'draggable' 类名的元素变为可拖拽对象
     #
-    # For more information on available parameters for dashboard grid:
+    # 更多仪表盘网格相关的可用参数请见：
     # https://github.com/react-grid-layout/react-grid-layout#grid-layout-props
     # https://github.com/react-grid-layout/react-grid-layout#responsive-grid-layout-props
 
     with dashboard.Grid(layout, draggableHandle=".draggable"):
 
-        # First card, the code editor.
+        # 第一个卡片，代码编辑器
         #
-        # We use the 'key' parameter to identify the correct dashboard item.
+        # 我们使用 'key' 参数来选择正确的仪表盘对象
         #
-        # To make card's content automatically fill the height available, we will use CSS flexbox.
-        # sx is a parameter available with every Material UI widget to define CSS attributes.
+        # 为了让卡片的内容自动填充占满全部高度，我们将使用 flexbox CSS 样式
+        # sx 是所有 Material UI 组件均可使用的参数，用于定义其 CSS 属性
         #
-        # For more information regarding Card, flexbox and sx:
+        # 有关卡片、flexbox 和 sx 的更多信息，请见：
         # https://mui.com/components/cards/
         # https://mui.com/system/flexbox/
         # https://mui.com/system/the-sx-prop/
 
         with mui.Card(key="editor", sx={"display": "flex", "flexDirection": "column"}):
 
-            # To make this header draggable, we just need to set its classname to 'draggable',
-            # as defined above in dashboard.Grid's draggableHandle.
+            # 为了让标题可拖拽，我们只需要将其类名设为 'draggable'
+            # 与 dashboard.Grid 当中 draggableHandle 的查询选择对应
 
             mui.CardHeader(title="Editor", className="draggable")
 
-            # We want to make card's content take all the height available by setting flex CSS value to 1.
-            # We also want card's content to shrink when the card is shrinked by setting minHeight to 0.
+            # 要使卡片内容占满全高，我们需要将 CSS 样式中 flex 的值设为 1
+            # 同时我们也想要卡片内容随卡片缩放，因此将其 minHeight 设为 0
 
             with mui.CardContent(sx={"flex": 1, "minHeight": 0}):
 
-                # Here is our Monaco code editor.
+                # 以下是我们的 Monaco 代码编辑器
                 #
-                # First, we set the default value to st.session_state.data that we initialized above.
-                # Second, we define the language to use, JSON here.
+                # 首先，我们将其默认值设为之前初始化好的 st.session_state.data
+                # 其次，我们将设定所用的语言，这里我们设为 JSON
                 #
-                # Then, we want to retrieve changes made to editor's content.
-                # By checking Monaco documentation, there is an onChange property that takes a function.
-                # This function is called everytime a change is made, and the updated content value is passed in
-                # the first parameter (cf. onChange: https://github.com/suren-atoyan/monaco-react#props)
+                # 接下来，我们想要获取编辑器中内容的变动
+                # 查阅 Monaco 文档后，我们发现可以用 onChange 属性指定一个函数
+                # 这个函数会在每次变动发生后被调用，并且变更后的内容将被传入函数
+                # (参考 onChange: https://github.com/suren-atoyan/monaco-react#props)
                 #
-                # Streamlit Elements provide a special sync() function. This function creates a callback that will
-                # automatically forward its parameters to Streamlit's session state items.
+                # Streamlit Elements 提供了一个特殊的 sync() 函数
+                # 能够创建一个自动将其参数同步到 Streamlit 会话状态的回调函数
                 #
-                # Examples
+                # 样例
                 # --------
-                # Create a callback that forwards its first parameter to a session state item called "data":
+                # 创建一个自动将第一个参数同步至会话状态中 "data" 的回调函数：
                 # >>> editor.Monaco(onChange=sync("data"))
                 # >>> print(st.session_state.data)
                 #
-                # Create a callback that forwards its second parameter to a session state item called "ev":
+                # 创建一个自动将第二个参数同步至会话状态中 "ev" 的回调函数：
                 # >>> editor.Monaco(onChange=sync(None, "ev"))
                 # >>> print(st.session_state.ev)
                 #
-                # Create a callback that forwards both of its parameters to session state:
+                # 创建一个自动将两个参数同步至会话状态的回调函数：
                 # >>> editor.Monaco(onChange=sync("data", "ev"))
                 # >>> print(st.session_state.data)
                 # >>> print(st.session_state.ev)
                 #
-                # Now, there is an issue: onChange is called everytime a change is made, which means everytime
-                # you type a single character, your entire Streamlit app will rerun.
+                # 那么问题来了：onChange 会在每次发生变动时被调用
+                # 那么意味着每当你输入一个字符，整个 Streamlit 应用都会重新运行
                 #
-                # To avoid this issue, you can tell Streamlit Elements to wait for another event to occur
-                # (like a button click) to send the updated data, by wrapping your callback with lazy().
+                # 为了避免这个问题，可以使用 lazy() 令 Streamlit Elements 等待其他事件发生
+                # （比如点击按钮）然后再将更新后的数据传给回调函数
                 #
-                # For more information on available parameters for Monaco:
+                # 有关 Monaco 其他可用参数的说明，请见：
                 # https://github.com/suren-atoyan/monaco-react
                 # https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.IStandaloneEditorConstructionOptions.html
 
@@ -170,43 +170,42 @@ with elements("demo"):
 
             with mui.CardActions:
 
-                # Monaco editor has a lazy callback bound to onChange, which means that even if you change
-                # Monaco's content, Streamlit won't be notified directly, thus won't reload everytime.
-                # So we need another non-lazy event to trigger an update.
+                # Monaco 编辑器已经将一个延迟回调函数绑定至 onChange 了，因此即便你更改了 Monaco 的内容
+                # Streamlit 也不会立刻接收到，因此不会每次都重新运行
+                # 因此我们需要另一个非延迟的事件来触发更新
                 #
-                # The solution is to create a button that fires a callback on click.
-                # Our callback doesn't need to do anything in particular. You can either create an empty
-                # Python function, or use sync() with no argument.
+                # 解决方法就是创建一个在点击时回调的按钮
+                # 我们的回调函数实际上不需要做任何事
+                # 你可以创建一个空的函数，或者直接使用不带参数的 sync()
                 #
-                # Now, everytime you will click that button, onClick callback will be fired, but every other
-                # lazy callbacks that changed in the meantime will also be called.
+                # 然后每当你点击按钮的时候，onClick 回调函数会被调用
+                # 而期间其他延迟调用了的回调函数也会被一并执行
 
                 mui.Button("Apply changes", onClick=sync())
 
-        # Second card, the Nivo Bump chart.
-        # We will use the same flexbox configuration as the first card to auto adjust the content height.
+        # 第二个卡片，Nivo Bump 图
+        # 我们将使用和第一个卡片同样的 flexbox 配置来自动调整内容高度
 
         with mui.Card(key="chart", sx={"display": "flex", "flexDirection": "column"}):
 
-            # To make this header draggable, we just need to set its classname to 'draggable',
-            # as defined above in dashboard.Grid's draggableHandle.
+            # 为了让标题可拖拽，我们只需要将其类名设为 'draggable'
+            # 与 dashboard.Grid 当中 draggableHandle 的查询选择对应
 
             mui.CardHeader(title="Chart", className="draggable")
 
-            # Like above, we want to make our content grow and shrink as the user resizes the card,
-            # by setting flex to 1 and minHeight to 0.
+            # 和前面一样，我们想要让我们的内容随着用户缩放卡片而缩放
+            # 因此将 flex 属性设为 1，minHeight 设为 0
 
             with mui.CardContent(sx={"flex": 1, "minHeight": 0}):
 
-                # This is where we will draw our Bump chart.
+                # 以下我们将绘制 Bump 图
                 #
-                # For this exercise, we can just adapt Nivo's example and make it work with Streamlit Elements.
-                # Nivo's example is available in the 'code' tab there: https://nivo.rocks/bump/
+                # 在这个练习里，我们就借用一下 Nivo 的示例，将其用在 Streamlit Elements 里面
+                # Nivo 的示例可以在这里此页面的 'code' 标签页中找到：https://nivo.rocks/bump/
                 #
-                # Data takes a dictionary as parameter, so we need to convert our JSON data from a string to
-                # a Python dictionary first, with `json.loads()`.
+                # data 参数接收一个字典，因此我们需要用 `json.loads()` 将 JSON 数据从字符串转化为字典对象
                 #
-                # For more information regarding other available Nivo charts:
+                # 有关更多其他类型的 Nivo 图表，请见：
                 # https://nivo.rocks/
 
                 nivo.Bump(
@@ -251,19 +250,19 @@ with elements("demo"):
                     axisRight=None,
                 )
 
-        # Third element of the dashboard, the Media player.
+        # 仪表盘的第三个元素是媒体播放器
 
         with mui.Card(key="media", sx={"display": "flex", "flexDirection": "column"}):
             mui.CardHeader(title="Media Player", className="draggable")
             with mui.CardContent(sx={"flex": 1, "minHeight": 0}):
 
-                # This element is powered by ReactPlayer, it supports many more players other
-                # than YouTube. You can check it out there: https://github.com/cookpete/react-player#props
+                # 这个元素实现基于 ReactPlayer，它支持很多除了 YouTube 以外的媒体
+                # 你能在这里查看完整列表：https://github.com/cookpete/react-player#props
 
                 media.Player(url=media_url, width="100%", height="100%", controls=True)
 
 ```
 
-## Any question?
+## 有疑问？
 
-Feel free to ask any question regarding Streamlit Elements or this challenge there: [Streamlit Elements Topic](https://discuss.streamlit.io/t/streamlit-elements-build-draggable-and-resizable-dashboards-with-material-ui-nivo-charts-and-more/24616)
+你可以随时在这个话题中询问任何有关 Streamlit Elements 的问题：[Streamlit Elements Topic](https://discuss.streamlit.io/t/streamlit-elements-build-draggable-and-resizable-dashboards-with-material-ui-nivo-charts-and-more/24616)

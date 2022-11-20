@@ -1,17 +1,20 @@
-# How to layout your Streamlit app
+# 如何布局你的 Streamlit 应用
 
-In this tutorial, we're going to use the following commands to layout our Streamlit app:
-- `st.set_page_config(layout="wide")` - Displays the contents of the app in wide mode (otherwise by default, the contents are encapsulated in a fixed width box.
-- `st.sidebar` - Places the widgets or text/image displays in the sidebar.
-- `st.expander` - Places text/image displays inside a collapsible container box.
-- `st.columns` - Creates a tabular space (or column) within which contents can be placed inside.
+在这篇教程中，我们将用以下几个命令来布局我们的 Streamlit 应用：
 
-## Demo app
+- `st.set_page_config(layout="wide")` - 将应用的内容以宽屏模式呈现（默认情况下以一固定宽度的列的形式呈现）
+- `st.sidebar` - 将组件/文字/图片显示在侧边栏中
+- `st.expander` - 将组件/文字/图片显示在一个可折叠的容器中
+- `st.columns` - 创建表格布局（或列布局）来容纳内容
+
+## 示例应用
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/streamlit-layout/)
 
-## Code
-Here's how to customize the layout of your Streamlit app:
+## 代码
+
+以下展示了如何自定义你的 Streamlit 应用布局：
+
 ```python
 import streamlit as st
 
@@ -51,30 +54,36 @@ with col3:
     st.write('👈 Please choose your favorite **food**!')
 ```
 
-## Line-by-line explanation
-The very first thing to do when creating a Streamlit app is to start by importing the `streamlit` library as `st` like so:
+## 逐行解释
+
+创建 Streamlit 应用时要做的第一件事就是将 `streamlit` 库导入为 `st`：
+
 ```python
 import streamlit as st
 ```
 
-We'll start by first defining the page layout to be displayed in the `wide` mode, which allows the page content to expand to the browser's width.
+我们首先令页面的显示模式变为宽屏模式，页面内容将占据浏览器的全部宽度进行显示。
+
 ```python
 st.set_page_config(layout="wide")
 ```
 
-Next, we'll give the Streamlit app a title.
+接下来，我们为这个 Streamlit 应用设置一个标题。
+
 ```python
 st.title('How to layout your Streamlit app')
 ```
 
-An expandable box titled `About this app` is placed under the app title. Upon expansion, we'll see additional details inside.
+在应用标题下方创建一个标题名为 `About this app` 的可折叠区域。在展开时，我们可以看到其其中包含的额外细节。
+
 ```python
 with st.expander('About this app'):
   st.write('This app shows the various ways on how you can layout your Streamlit app.')
   st.image('https://streamlit.io/images/brand/streamlit-logo-secondary-colormark-darktext.png', width=250)
 ```
 
-Input widgets for accepting user input is placed in the sidebar as specified by using the `st.sidebar` command before the Streamlit commands `text_input` and `selectbox`. Input values entered or selected by the user are assigned and stored in the `user_name`, `user_emoji` and `user_food` variables.
+通过在 `text_input` 和 `selectbox` 之前加上 `st.sidebar` 命令，我们将用于接收用户输入的组件放入侧边栏内。用户输入或选择的数值将被赋值并存储在 `user_name`、`user_emoji` 和 `user_food` 变量之中。
+
 ```python
 st.sidebar.header('Input')
 user_name = st.sidebar.text_input('What is your name?')
@@ -82,7 +91,8 @@ user_emoji = st.sidebar.selectbox('Choose an emoji', ['', '😄', '😆', '😊'
 user_food = st.sidebar.selectbox('What is your favorite food?', ['', 'Tom Yum Kung', 'Burrito', 'Lasagna', 'Hamburger', 'Pizza'])
 ```
 
-Finally, we'll create 3 columns using the `st.columns` command which corresponds to `col1`, `col2` and `col3`. Then, we assign contents to each of the column by creating individual code blocks starting with the `with` statement. Underneath this, we create conditional statements that display 1 of 2 alternative text depending on whether the user had provided their input data (specified in the sidebar) or not. By default, the page displays text under the `else` statement. Upon providing user input, the corresponding information that the user gives to the app is displayed under the `Output` header text.
+最后，我们使用 `st.columns` 命令创建三列，分别名为 `col1`、`col2` 和 `col3`。然后我们使用独立的 `with` 语句将内容放入每列之中。其中我们创建了三个条件分支语句，根据用户是否在侧边栏中提供了输入来显示不同的文字。默认情况下显示的均为 `else` 语句下的内容。如果用户提供了对应的输入，则会显示在 `Output` 标题下方。
+
 ```python
 st.header('Output')
 
@@ -106,7 +116,9 @@ with col3:
   else:
     st.write('👈 Please choose your favorite **food**!')
 ```
-It is also worthy to note that `f` strings were used to combine pre-canned text together with the user provided values. 
 
-## Further reading
-- [Layouts and Containers](https://docs.streamlit.io/library/api-reference/layout)
+值得注意的是，这里我们用 `f`-字符串来将固定的信息与用户的输入数值相结合。
+
+## 延伸阅读
+
+- [布局与容器](https://docs.streamlit.io/library/api-reference/layout)

@@ -1,35 +1,37 @@
-# The Art of Creating Streamlit Apps
+# 创建 Streamlit 应用之艺术
 
-Today's Day 30 of the *#30DaysOfStreamlit* challenge. Congratulations on making this far in the challenge.
+今天是 _#30 天学 Streamlit_ 挑战的第 30 天。祝贺你已经走到这里了。
 
-In this tutorial, we're going to put our newfound knowledge from this learning challenge to create Streamlit apps to solve real-world problem.
+在这片教程中，我们将会用到这个学习挑战中新学的知识来创建一个解决真实世界问题的 Streamlit 应用。
 
-## Real-world problem
+## 真实世界问题
 
-As a content creator, having access to thumbnail images from YouTube videos are useful resources for social promotion and content creation.
+作为一个内容创作者，能够访问到 YouTube 视频的缩略图将会是社会推广和内容创作的重要资源。
 
-Let's figure out how we're going to tackle this problem and build a Streamlit app.
+让我们想个办法解决这个问题并且搭建一个 Streamlit 应用。
 
-## Solution
+## 解决方案
 
-Today, we're going to build `yt-img-app`, which is a Streamlit app that can extract thumbnail images from YouTube videos.
+今天我们将搭建一个 `yt-img-app`，它将是一个能够从 YouTube 视频提取缩略图的 Streamlit 应用。
 
-In a nutshell, here's the 3 simple steps that we want the Streamlit app to do:
+简单来说，我们想要这个 Streamlit 应用做的事可以分为三步：
 
-1. Accept a YouTube URL as input from users
-2. Perform text processing of the URL to extract the unique YouTube video ID
-3. Use the YouTube video ID as an input to a custom function that retrieves and displays the thumbnail image from YouTube videos
+1. 接收用户输入的 YouTube 链接
+2. 对链接进行文本处理，提取出 YouTube 视频独特的标识 ID
+3. 用这个 YouTube 视频的 ID 作为一个自定义函数的输入，获取然后显示 YouTube 视频的缩略图
 
-## Instructions
+## 简介
 
-To get started in using the Streamlit app, copy and paste a YouTube URL into the input text box.
+要是用这个 Streamlit 应用，只需要在文本输入框中复制粘贴进一个 YouTube 链接即可。
 
-## Demo app
+## 示例应用
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/yt-img-app/)
 
-## Code
-Here's how to build the `yt-img-app` Streamlit app:
+## 代码
+
+以下展示了如何搭建这个 `yt-img-app` Streamlit 应用：
+
 ```python
 import streamlit as st
 
@@ -38,7 +40,7 @@ st.header('YouTube Thumbnail Image Extractor App')
 
 with st.expander('About this app'):
   st.write('This app retrieves the thumbnail image from a YouTube video.')
-  
+
 # Image settings
 st.sidebar.header('Settings')
 img_dict = {'Max': 'maxresdefault', 'High': 'hqdefault', 'Medium': 'mqdefault', 'Standard': 'sddefault'}
@@ -53,7 +55,7 @@ def get_ytid(input_url):
   if 'youtube.com' in input_url:
     ytid = input_url.split('=')[-1]
   return ytid
-    
+
 # Display YouTube thumbnail image
 if yt_url != '':
   ytid = get_ytid(yt_url) # yt or yt_url
@@ -65,23 +67,30 @@ else:
   st.write('☝️ Enter URL to continue ...')
 ```
 
-## Line-by-line explanation
-The very first thing to do when creating a Streamlit app is to start by importing the `streamlit` library as `st` like so:
+## 逐行解释
+
+创建 Streamlit 应用时要做的第一件事就是将 `streamlit` 库导入为 `st`：
+
 ```python
 import streamlit as st
 ```
 
-Next, we display the app's title and accompanying header:
+接下来我们显示应用的标题以及紧随其后的副标题：
+
 ```python
 st.title('🖼️ yt-img-app')
 st.header('YouTube Thumbnail Image Extractor App')
 ```
-While we're at it, we'll might as well throw in an About expandable box.
+
+来都来了，再加个“有关信息”拓展框也不是不行。
+
 ```python
 with st.expander('About this app'):
   st.write('This app retrieves the thumbnail image from a YouTube video.')
- 
-Here, we create selection box for accepting user input on the image quality to use.
+```
+
+以下我们创建一个用于让用户选择图像质量的选择框。
+
 ```python
 # Image settings
 st.sidebar.header('Settings')
@@ -90,12 +99,14 @@ selected_img_quality = st.sidebar.selectbox('Select image quality', ['Max', 'Hig
 img_quality = img_dict[selected_img_quality]
 ```
 
-An input text box is displayed to accept user input on the YouTube video URL to use for extracting the image from.
+显示一个文本输入框来接收用户输入的需要获取缩略图的 YouTube 视频链接。
+
 ```python
 yt_url = st.text_input('Paste YouTube URL', 'https://youtu.be/JwSS70SZdyM')
 ```
 
-A custom function for performing text processing of the input URL.
+定义一个函数来处理输入的链接。
+
 ```python
 def get_ytid(input_url):
   if 'youtu.be' in input_url:
@@ -105,7 +116,8 @@ def get_ytid(input_url):
   return ytid
 ```
 
-Finally, we use flow control to determine whether to display a reminder to enter the URL (i.e. as in the `else` statement) or to display the YouTube thumbnail image (i.e. as in the `if` statement).
+最后我们用流程控制来决定是要提示用户输入链接（见 `else` 语句部分）还是要显示 YouTube 缩略图（见 `if` 语句部分）。
+
 ```python
 # Display YouTube thumbnail image
 if yt_url != '':
@@ -118,10 +130,10 @@ else:
   st.write('☝️ Enter URL to continue ...')
 ```
 
-## Summary
+## 总结
 
-In summary, we have seen that in the creation of any Streamlit app, we normally start by first identifying and defining the problem. Next, we devise a solution to tackle the problem by breaking it down into the granular steps, which we implement in the Streamlit app. 
+总的来说，我们已经见识到了如何创建一个 Streamlit 应用，通常首先是明确和确定需求问题。然后我们设计一个解决方案将问题拆解为细粒度的步骤，然后我们在 Streamlit 应用中逐步实现。
 
-Here, we also have to determine which data or information that we need as input from users, the approach and method to use in processing the user input in order to produce the final desired output.
+此时我们同样需要决定用户需要输入的数据或者信息、处理用户输入的方式方法，才能产出满意的结果。
 
-Hope you enjoyed this tutorial, Happy Streamlit-ing!
+希望你能从本教程中有所收获，祝你 Streamlit 用得开心！

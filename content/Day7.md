@@ -1,18 +1,19 @@
-# Deploying your Streamlit app with Streamlit Community Cloud
+# 将你的 Streamlit 应用部署至 Streamlit Community Cloud
 
 ## Streamlit Community Cloud
 
-[Streamlit Community Cloud](https://streamlit.io/cloud) is a hosting service for easily deploying Streamlit apps.
+[Streamlit Community Cloud](https://streamlit.io/cloud) 是一项用于轻松部署 Streamlit 应用的托管服务。
 
-## Sign up for Streamlit Community Cloud
+## 注册 Streamlit Community Cloud 账号
 
-You can easily sign up for [Streamlit Community Cloud](https://streamlit.io/cloud) by simply logging in with Google or GitHub account.
+你能够使用 Google 账号或 GitHub 账号登录来轻松注册一个 [Streamlit Community Cloud](https://streamlit.io/cloud) 账号。
 
-## Deploy a Streamlit app
+## 部署 Streamlit 应用
 
-To deploy a Streamlit app, do the following:
-1. Sign in with GitHub or Gmail credentials
-2. Pick a repo, branch and file
-3. Click Deploy
+按照以下步骤来部署 Streamlit 应用：
 
-Then any time you do a git push your app will update immediately.
+1. 使用 GitHub 或 Gmail 认证登录
+2. 选择一个仓库、分支以及文件
+3. 点击部署（Deploy）
+
+此后每当你进行 git push 时，所部署的应用都会立刻更新。

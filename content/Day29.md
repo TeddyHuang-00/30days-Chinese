@@ -1,32 +1,32 @@
-# How to make a zero-shot learning text classifier using Hugging Face and Streamlit
+# 如何使用 Hugging Face 和 Streamlit 搭建一个零样本学习文本分类器
 
-In today's challenge, [Charly Wargnier](https://twitter.com/DataChaz) will walk us through the process of developing a zero-shot learning text classifier using Hugging Face and Streamlit.
+在今天的挑战中，[Charly Wargnier](https://twitter.com/DataChaz) 会带领我们学习使用 Hugging Face 和 Streamlit 开发一个零样本学习的文本分类器的流程。
 
-## Introduction
+## 简介
 
-Hey Streamliters!
+嘿，Streamlit 人！
 
-Today I'm excited to have the opportunity to contribute to the 30DaysofStreamlit challenge via this hands-on tutorial! 🎈
+我很荣幸今天能够有机会为“30 天学 Streamlit”挑战来做这个实操教程！
 
-## What are we building?
+## 我们要做什么？
 
-We will create a zero-shot learning text classifier using Hugging Face's API inference and Distilbart!
+我们将会使用 Hugging Face 的 API 参考以及 Distilbart 创建一个零样本学习的文本分类器！
 
-You will have the mighty power to classify keyphrases on-the-fly, fast, and without pre ML training!
+你将学到强大而飞速的、不借助预训练的分类关键词的能力！
 
-Create classifying labels, paste your keyphrases, and you're off!
+创建分类标签，粘贴进你的关键词，然后就完成了！
 
-You can set these labels anything, e.g.:
+你可以将标签设置为任何东西，比如：
 
-- Positive, Negative and Neutral for sentiment analysis
-- Angry, Happy, Emotional for emotion analysis
-- Navigational, Transactional, Informational for intent classification purposes
-- Your product range  (bags, shoes, boots etc.)
+- 情感分析中的正面、负面、中性
+- 情绪分析中的生气、高兴、伤感
+- 意图分类中的导向型、事务型、信息型
+- 你的产品范围（背包、鞋子、靴子等等）
 
-You decide! 
+你自行决定！
 
-Excited? Let's dive in! 
+跃跃欲试了吗？让我们开始吧！
 
-## Read the full blog
-👉 [Read the full blog](https://www.charlywargnier.com/post/how-to-create-a-zero-shot-learning-text-classifier-using-hugging-face-and-streamlit)
+## 阅读完整博客
 
+👉 [阅读完整博客](https://www.charlywargnier.com/post/how-to-create-a-zero-shot-learning-text-classifier-using-hugging-face-and-streamlit)

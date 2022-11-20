@@ -1,24 +1,25 @@
 # st.slider
 
-`st.slider` allows the display of a slider input widget.
+`st.slider` 能够显示一个滑条输入组件。
 
-The following data types are supported: int, float, date, time, and datetime.
+支持一下几种数据类型：int、float、date、time 和 datetime。
 
-## What we're building?
+## 我们要做什么？
 
-A simple app that shows the various ways on how to accept user input by adjusting the slider widget.
+我们今天要搭建一个简单的应用，来展示如何使用滑条组件接收各类来自用户的输入。
 
-Flow of the app:
-1. User selects value by adjusting the slider widget
-2. App prints out the selected value
+应用的流程：
 
-## Demo app
+1. 用户通过调整滑条来选择数值
+2. 将用户所选数值显示出来
+
+## 示例应用
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/st.slider/)
 
+## 代码
 
-## Code
-Here's how to use st.slider:
+以下为 `st.slider` 的用法：
 
 ```python
 import streamlit as st
@@ -26,14 +27,14 @@ from datetime import time, datetime
 
 st.header('st.slider')
 
-# Example 1
+# 样例 1
 
 st.subheader('Slider')
 
 age = st.slider('How old are you?', 0, 130, 25)
 st.write("I'm ", age, 'years old')
 
-# Example 2
+# 样例 2
 
 st.subheader('Range slider')
 
@@ -42,7 +43,7 @@ values = st.slider(
      0.0, 100.0, (25.0, 75.0))
 st.write('Values:', values)
 
-# Example 3
+# 样例 3
 
 st.subheader('Range time slider')
 
@@ -51,7 +52,7 @@ appointment = st.slider(
      value=(time(11, 30), time(12, 45)))
 st.write("You're scheduled for:", appointment)
 
-# Example 4
+# 样例 4
 
 st.subheader('Datetime slider')
 
@@ -63,21 +64,24 @@ st.write("Start time:", start_time)
 
 ```
 
-## Line-by-line explanation
-The very first thing to do when creating a Streamlit app is to start by importing the `streamlit` library as `st` like so:
+## 逐行解释
+
+创建 Streamlit 应用时要做的第一件事就是将 `streamlit` 库导入为 `st`：
+
 ```python
 import streamlit as st
 from datetime import time, datetime
 ```
 
-This is followed by creating a header text for the app:
+然后紧跟着的是应用的标题文字：
+
 ```python
 st.header('st.slider')
 ```
 
-**Example 1**
+**样例 1**
 
-Slider:
+基础滑条：
 
 ```python
 st.subheader('Slider')
@@ -86,16 +90,15 @@ age = st.slider('How old are you?', 0, 130, 25)
 st.write("I'm ", age, 'years old')
 ```
 
-As we can see, the `st.slider()` command
-is used to collect user input about the age of users.
+如你所见，`st.slider()` 命令被用作收集用户输入的年龄信息。
 
-The first input argument displays the text just above the **slider** widget asking `'How old are you?'`.
+第一个参数为 **滑条** 组件上方的标题文字，此处为询问用户年龄：`'How old are you?'`。
 
-The following three integers `0, 130, 25` represents the minimum, maximum and default values, respectively.
+接下来三个整数 `0, 130, 25` 分别代表最小值、最大值和默认数值。
 
-**Example 2**
+**样例 2**
 
-Range slider:
+范围滑条：
 
 ```python
 st.subheader('Range slider')
@@ -106,15 +109,15 @@ values = st.slider(
 st.write('Values:', values)
 ```
 
-The range slider allow selection of a lower and upper bound value pair.
+范围滑条允许同时输入一对下界与上界数值。
 
-The first input argument displays the text just above the **range slider** widget asking `'Select a range of values'`.
+第一个参数为 **范围滑条** 组件上方的标题文字，此处为询问数字范围：`'Select a range of values'`。
 
-The following three arguments `0.0, 100.0, (25.0, 75.0)` represents the minimum and maximum values while the last tuple denotes the default values to use as the selected lower (25.0) and upper (75.0) bound values.
+接下来三个参数 `0.0, 100.0, (25.0, 75.0)` 分别代表了最小值、最大值和默认的一对下界与上界数值 (25.0, 75.0) 。
 
-**Example 3**
+**样例 3**
 
-Range time slider:
+时间范围滑条：
 
 ```python
 st.subheader('Range time slider')
@@ -125,15 +128,15 @@ appointment = st.slider(
 st.write("You're scheduled for:", appointment)
 ```
 
-The range time slider allows selection of a lower and upper bound value pair of datetime.
+时间范围滑条允许同时输入一对下界与上界时间。
 
-The first input argument displays the text just above the **range time slider** widget asking `'Schedule your appointment:`.
+第一个参数为 **时间范围滑条** 组件上方的标题文字，此处为询问预约时段：`'Schedule your appointment:'`。
 
-The default values for the lower and upper bound value pairs of datetime are set to 11:30 and 12:45, respectively.
+这里下界与上界时间的默认值分别被设为 11:30 和 12:45。
 
-**Example 4**
+**样例 4**
 
-Datetime slider:
+日期时间滑条：
 
 ```python
 st.subheader('Datetime slider')
@@ -145,12 +148,14 @@ start_time = st.slider(
 st.write("Start time:", start_time)
 ```
 
-The datetime slider allows selection of a datetime.
+日期时间滑条允许输入一个日期时间。
 
-The first input argument displays the text just above the **datetime** slider widget asking `'When do you start?'`.
+第一个参数为 **日期时间滑条** 组件上方的标题文字，此处为询问开始时间：`'When do you start?'`。
 
-The default value for the datetime was set using the `value` option to be January 1, 2020 at 9:30
+这里日期时间的默认值通过 `value` 参数被设为 2020 年 1 月 1 日 9:30。
 
-## Further reading
-You can also explore the following related widget:
+## 延伸阅读
+
+你可以探索与此相关的组件：
+
 - [`st.select_slider`](https://docs.streamlit.io/library/api-reference/widgets/st.select_slider)

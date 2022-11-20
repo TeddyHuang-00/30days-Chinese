@@ -1,47 +1,47 @@
-# 30 Days Of Streamlit 🎈
+# 30 天学 Streamlit 🎈
 
 <img src='3AF34648-C61D-47CE-9E56-C496C5A7C240.jpeg' height=250>
 
-This is the official repo of `#30DaysOfStreamlit` — a 30-day social challenge for you to learn, build and deploy [Streamlit](https://streamlit.io) apps.
+这是一个 `#30天学Streamlit` 的官方仓库 — 这是一个 30 天的社会挑战，在这里你将学习、搭建和部署 [Streamlit](https://streamlit.io) 应用。
 
-## How to participate
+## 如何参与
 
-All you need to participate is a computer, a basic understanding of Python, and your curiosity. 🧠
+你只需要一台电脑、Python 基础知识以及你的好奇心 🧠！
 
-A new challenge is released daily via Streamlit's [Twitter](https://twitter.com/streamlit) and [LinkedIn](https://www.linkedin.com/company/streamlit/posts/?feedView=all) accounts as well as the [`#30DaysOfStreamlit` app](https://share.streamlit.io/streamlit/30days/).
+每天一个新挑战都会通过 Streamlit 的 [Twitter](https://twitter.com/streamlit) 和 [LinkedIn](https://www.linkedin.com/company/streamlit/posts/?feedView=all) 账号，以及由 [`#30天学Streamlit` 应用](https://share.streamlit.io/streamlit/30days/) 发布。
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/streamlit/30days/)
 
-Complete the daily challenges, share your solutions with us on Twitter or LinkedIn, and get rewarded with cool Streamlit swag! 😎
+完成每日挑战，在 Twitter 和 LinkedIn 上与我们分享你的解决方案，赢超炫的 Streamlit 奖品 😎！
 
-## What are the daily challenges?
+## 每日挑战都有什么？
 
-Find out more about the specific challenges by participating! The 30-day challenges are divided by 3 levels of difficulty to appeal to participants of all skill levels:
+具体的挑战得参与了才知道！本 30 天挑战分为三个难度等级来吸引所有水平的参与者：
 
-| Beginner (Days 1-7) | Intermediate (Days 8-23) | Advanced (Days 24-30) |
-| :---        |    :----   |          :--- |
-| Set up your local and cloud coding environments, install Streamlit, and build your first Streamlit app.| Learn about a new [Streamlit command](https://docs.streamlit.io/library/api-reference) each day and use it to create and deploy a simple Streamlit app. | Learn about important topics such as session state, efficient data and memory management via caching, complex layouts, and much more.
+| 入门 (1-7 天)                                                            | 中级 (8-23 天)                                                                                                                | 进阶 (24-30 天)                                              |
+| :----------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------- |
+| 配置本地和云端编程环境、安装 Streamlit 并且搭建你的第一个 Streamlit 应用 | 每天一个新的 [Streamlit 命令](https://docs.streamlit.io/library/api-reference)，并且用它来创建、部署一个简单的 Streamlit 应用 | 学习诸如会话状态、缓存实现高效数据以及内存管理、复杂布局等等 |
 
-## Prizes
+## 奖项
 
-If getting up to speed with the fastest and easiest way to build data apps isn't already the best summer gift, you can also win Streamlit goodies!
+如果学会最快最简单构建数据应用的方法还不算是最好的夏季奖励，你还有机会赢得 Streamlit 的礼物！
 
-Complete the daily challenges, share your solutions with us on [Twitter](https://twitter.com/streamlit) or [LinkedIn](https://www.linkedin.com/company/streamlit/posts/?feedView=all), and get rewarded with cool Streamlit swag! 🎁
+完成每日挑战，在 [Twitter](https://twitter.com/streamlit) 或 [LinkedIn](https://www.linkedin.com/company/streamlit/posts/?feedView=all) 和我们分享你的解决方案，就有机会赢得炫酷的 Streamlit 奖品！🎁
 
-## Resources
+## 相关资源
 
-- The official [`#30DaysOfStreamlit` app](https://share.streamlit.io/streamlit/30days/) where daily challenges are posted
-- Our [Twitter](https://twitter.com/streamlit) and [LinkedIn](https://www.linkedin.com/company/streamlit/posts/?feedView=all) feeds for daily updates
-- Streamlit [documentation](https://docs.streamlit.io/) and [cheat sheet](https://docs.streamlit.io/library/cheatsheet) for a thorough reference of Streamlit commands
-- Our awesome [Gallery](https://streamlit.io/gallery) for inspiration, templates, and community apps
-- Our [blog](https://blog.streamlit.io/how-to-master-streamlit-for-data-science/) for tips and the latest Streamlit info
+- 发布每日挑战的官方 [`#30天学Streamlit` 应用](https://share.streamlit.io/streamlit/30days/)
+- 我们在 [Twitter](https://twitter.com/streamlit) 和 [LinkedIn](https://www.linkedin.com/company/streamlit/posts/?feedView=all) 上的每日更新推送
+- 完整的 Streamlit 命令参考见 Streamlit [文档](https://docs.streamlit.io/) 和 [一图流](https://docs.streamlit.io/library/cheatsheet)
+- 我们超赞的 [画廊](https://streamlit.io/gallery) 给你提供灵感、模板和社区制作的应用
+- 我们的 [博客](https://blog.streamlit.io/how-to-master-streamlit-for-data-science/) 上分享了小技巧和最新的 Streamlit 消息
 
-## Translations
+## 翻译
 
-Want to help us expand the reach of `#30DaysOfStreamlit` and English isn't your primary language? Translate the challenges into your preferred language and link to them below!
+想要帮助我们拓展 `#30天学Streamlit` 但英语不是你的第一语言？把这个挑战翻译成你更倾向的语言然后把它们连接到这下面！
+
 - [English](https://github.com/streamlit/30days) (Official): [![30 Days of Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://30days.streamlitapp.com)
 - [French](https://github.com/streamlit/30days-French) (by [Charly Wargnier](https://github.com/charlyWargnier/)): [![30 Days of Streamlit en Français!](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://30days-in-french.streamlitapp.com/)
 - [Portuguese](https://github.com/franciscoed/30days) (by [franciscoed](https://github.com/franciscoed)): [![30 Dias de Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/franciscoed/30days)
-
-Work in progress:
 - [Español](https://github.com/arraydude/30days-spanish/) (by [Emiliano Rosso](https://github.com/arraydude)): [![30 Dias de Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/arraydude/30days)
+- [Chinese](hhttps://github.com/TeddyHuang-00/30days-Chinese) (by [TeddyHuang-00](https://github.com/TeddyHuang-00)): [![30 天学 Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://30days-chinese.streamlit.app)

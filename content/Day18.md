@@ -1,15 +1,17 @@
 # st.file_uploader
 
-`st.file_uploader` displays a file uploader widget [[1](https://docs.streamlit.io/library/api-reference/widgets/st.file_uploader)].
+`st.file_uploader` 显示一个上传文件的组件 [[1](https://docs.streamlit.io/library/api-reference/widgets/st.file_uploader)]。
 
-By default, uploaded files are limited to 200MB. You can configure this using the server.maxUploadSize config option. For more info on how to set config options, see [[2](https://docs.streamlit.io/library/advanced-features/configuration#set-configuration-options)].
+默认情况下，上传的文件大小不能超过 200MB。你可以在通过 `server.maxUploadSize` 选项对其进行配置。更多有关如何配置选项的内容请见 [[2](https://docs.streamlit.io/library/advanced-features/configuration#set-configuration-options)].
 
-## Demo app
+## 示例应用
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/st.file_uploader/)
 
-## Code
-Here's how to use `st.file_uploader`:
+## 代码
+
+以下展示了如何使用 `st.file_uploader`：
+
 ```python
 import streamlit as st
 import pandas as pd
@@ -29,25 +31,30 @@ else:
   st.info('☝️ Upload a CSV file')
 ```
 
-## Line-by-line explanation
-The very first thing to do when creating a Streamlit app is to start by importing the `streamlit` library as `st` and other prerequisite library like so:
+## 逐行解释
+
+创建 Streamlit 应用时要做的第一件事就是将 `streamlit` 库导入为 `st`，以及导入其他依赖库：
+
 ```python
 import streamlit as st
 import pandas as pd
 ```
 
-This is followed by creating a title text for the app:
+紧跟着的是为应用创建一个标题：
+
 ```python
 st.title('st.file_uploader')
 ```
 
-Next, we'll use `st.file_uploader` to display a file uploader widget for accepting user input file:
+接下来我们将用 `st.file_uploader` 来显示一个文件上传的组件来接收用户的文件输入：
+
 ```python
 st.subheader('Input CSV')
 uploaded_file = st.file_uploader("Choose a file")
 ```
 
-Finally, we define conditional statements for initially displaying a welcome message inviting users to upload their file (as implemented in the `else` condition). Upon file upload, the `if` statements are activated and the CSV file is read by the `pandas` library and displayed via the `st.write` command.
+最后，我们用条件分支语句来首先显示一个欢迎消息，提示用户上传文件（`else` 分支实现）。一旦有文件上传，则进入 `if` 分支并且使用 `pandas` 库读入 CSV 文件，然后使用 `st.write` 命令进行显示。
+
 ```python
 if uploaded_file is not None:
   df = pd.read_csv(uploaded_file)
@@ -59,6 +66,7 @@ else:
   st.info('☝️ Upload a CSV file')
 ```
 
-## Further reading
+## 延伸阅读
+
 1. [`st.file_uploader`](https://docs.streamlit.io/library/api-reference/widgets/st.file_uploader)
-2. [Set configuration options](https://docs.streamlit.io/library/advanced-features/configuration#set-configuration-options)
+2. [设置配置选项](https://docs.streamlit.io/library/advanced-features/configuration#set-configuration-options)

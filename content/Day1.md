@@ -1,40 +1,46 @@
-# Setting up a local development environment
+# 设置本地开发环境
 
-Before we can actually start building Streamlit apps, we will first have to setup a development environment.
+在我们正式开始构建 Streamlit 应用之前，我们需要首先设置一个开发环境。
 
-Let's start by installing and setting up a conda environment.
+让我们从安装和配置 conda 环境开始。
 
-## **Install conda**
-- Install `conda` by going to https://docs.conda.io/en/latest/miniconda.html and choose your operating system (Windows, Mac or Linux). 
-- Download and run the installer to install `conda`.
+## **安装 conda**
 
-## **Create a new conda environment**
-Now that you have conda installed, let's create a conda environment for managing all the Python library dependencies.
+- 前往 https：//docs.conda.io/en/latest/miniconda.html ，选择与你操作系统（Windows, Mac 或 Linux）对应的 `conda` 版本
+- 下载安装器并运行，完成 `conda` 的安装
 
-To create a new environment with Python 3.9, enter the following:
+## **新建一个 conda 环境**
+
+现在你已经装好了 conda ，让我们来创建一个 conda 环境来管理所有 Python 库依赖。
+
+比如按照如下指令，使用 Python 3.9 版本创建一个新的环境：
+
 ```bash
 conda create -n stenv python=3.9
 ```
 
-where `create -n stenv` will create a conda environment named `stenv` and `python=3.9` will setup the conda environment with Python version 3.9.
+其中 `create -n stenv` 表示创建一个名为 `stenv` 的 conda 环境，而 `python=3.9` 会指定 conda 环境使用 3.9 版本的 Python。
 
-## **Activate the conda environment**
+## **激活 conda 环境**
 
-To use a conda environment that we had just created that is named `stenv`, enter the following into the command line:
+要使用上一步刚创建好的名为 `stenv` 的 conda 环境，则需要使用如下的命令：
 
 ```bash
 conda activate stenv
 ```
 
-## **Install the Streamlit library**
+## **安装 Streamlit 库**
 
-It's now time to install the `streamlit` library:
+激活环境之后就是时候安装 `streamlit` 库了：
+
 ```bash
 pip install streamlit
 ```
 
-## **Launching the Streamlit demo app**
-To launch the Streamlit demo app (Figure 1) type:
+## **启动示例 Streamlit 应用**
+
+用如下指令来启动示例 Streamlit 应用（图 1）：
+
 ```bash
 streamlit hello
 ```

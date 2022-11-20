@@ -1,32 +1,34 @@
 # st.cache
 
-`st.cache` allows you to optimize the performance of your Streamlit app.
+`st.cache` 使得你可以优化 Streamlit 应用的性能。
 
-Streamlit provides a caching mechanism that allows your app to stay performant even when loading data from the web, manipulating large datasets, or performing expensive computations. This is done with the `@st.cache` decorator.
+Streamlit 提供了一个缓存机制，使你的应用即便是在从互联网加载数据、操作大数据集或者进行大开销的计算时仍可以保持高性能。这主要通过 `@st.cache` 装饰器来实现。
 
-When you mark a function with the @st.cache decorator, it tells Streamlit that whenever the function is called it needs to check a few things:
+当你用 `@st.cache` 装饰器标记一个函数时，它将告诉 Streamlit 在该函数执行前需要做如下一些检查：
 
-1. The input parameters that you called the function with
-2. The value of any external variable used in the function
-3. The body of the function
-4. The body of any function used inside the cached function
+1. 函数的输入参数是否发生了变化
+2. 函数中使用的外部变量是否发生了变化
+3. 函数的主体是否发生了变化
+4. 函数中用到的所有函数的主体是否发生了变化
 
-If this is the first time Streamlit has seen these four components with these exact values and in this exact combination and order, it runs the function and stores the result in a local cache. Then, next time the cached function is called, if none of these components changed, Streamlit will just skip executing the function altogether and, instead, return the output previously stored in the cache.
+如果以上任意一项不满足，即 Streamlit 第一次见到这四者的这种顺序组合时，它将会执行这个函数，并且将结果存储于本地缓存中。然后当下一次该带缓存的函数被调用时，如果以上四项均未发生改变，则 Streamlit 会直接跳过函数执行，而直接从缓存中调用先前的结果并返回。
 
-The way Streamlit keeps track of changes in these components is through hashing. Think of the cache as an in-memory key-value store, where the key is a hash of all of the above and the value is the actual output object passed by reference.
+Streamlit 通过哈希散列来追踪这些条件的变化。你可以把缓存当成一种存储在内存之中的键值对结构，其中上述四项总和的哈希值为键，以函数实际返回的引用为值。
 
-Finally, `@st.cache` supports arguments to configure the cache's behavior. You can find more information on those in our API reference.
+最后，`@st.cache` 支持一些参数来配置缓存的行为。详见我们的 API 参考。
 
-## How to use?
+## 如何使用？
 
-You can simply add `st.cache` decorator on the preceding line of a custom function that you define in your Streamlit app. See the example below.
+你可以简单地将 `st.cache` 装饰器添加至在应用中定义的函数的前一行。见如下样例。
 
-## Demo app
+## 示例应用
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/dataprofessor/st.cache/)
 
-## Code
-Here's how to use `st.cache`:
+## 代码
+
+一下展示了如何使用 `st.cache`：
+
 ```python
 import streamlit as st
 import numpy as np
@@ -68,8 +70,10 @@ b1 = time()
 st.info(b1-b0)
 ```
 
-## Line-by-line explanation
-The very first thing to do when creating a Streamlit app is to start by importing the `streamlit` library as `st` as well as other libraries used in the app like so:
+## 逐行解释
+
+创建 Streamlit 应用时要做的第一件事就是将 `streamlit` 库导入为 `st`，以及导入其他要用到的库：
+
 ```python
 import streamlit as st
 import numpy as np
@@ -77,12 +81,14 @@ import pandas as pd
 from time import time
 ```
 
-This is followed by creating a title text for the app:
+紧跟着的是为应用创建一个标题：
+
 ```python
 st.title('Streamlit Cache')
 ```
 
-Next, we'll define 2 custom functions for generating a large DataFrame where the first one makes use of the `st.cache` decorator while the second does not:
+接下来，我们定义了两个函数，用于生成大数据框，其中第一个函数使用了 `st.cache`，而第二个函数则不然：
+
 ```python
 @st.cache(suppress_st_warning=True)
 def load_data_a():
@@ -100,7 +106,8 @@ def load_data_b():
   return df
 ```
 
-Finally, we run the custom function while also timing the run time using the `time()` command.
+最后，我们调用自定义的函数，并且用 `time()` 命令对其计时。
+
 ```python
 # Using cache
 a0 = time()
@@ -123,11 +130,12 @@ b1 = time()
 st.info(b1-b0)
 ```
 
-Notice how the first run may provide roughly similar run time. Reload the app and notice how the run time changes when using the `st.cache` decorator. Did you observe any speed increase?
+注意到第一次运行时两者速度差距不大。重新加载应用后即可见到使用了 `st.cache` 装饰器的函数运行时长的变换。你看到这其中的速度提升了吗？
 
-## Further reading
-- [`st.cache` API Documentation](https://docs.streamlit.io/library/api-reference/performance/st.cache)
-- [Optimize performance with `st.cache`](https://docs.streamlit.io/library/advanced-features/caching)
-- [Experimental cache primitives](https://docs.streamlit.io/library/advanced-features/experimental-cache-primitives)
+## 延伸阅读
+
+- [`st.cache` API 文档](https://docs.streamlit.io/library/api-reference/performance/st.cache)
+- [使用 `st.cache` 优化性能](https://docs.streamlit.io/library/advanced-features/caching)
+- [试验性缓存机制](https://docs.streamlit.io/library/advanced-features/experimental-cache-primitives)
 - [`st.experimental_memo`](https://docs.streamlit.io/library/api-reference/performance/st.experimental_memo)
 - [`st.experimental_singleton`](https://docs.streamlit.io/library/api-reference/performance/st.experimental_singleton)

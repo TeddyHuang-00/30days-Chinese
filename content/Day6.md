@@ -1,34 +1,35 @@
-# Uploading your Streamlit app to GitHub
+# 将你的 Streamlit 应用上传至 GitHub
 
 ## GitHub
 
-Git is a software for keeping track of all changes made to code (i.e. version control). GitHub is a Git repository hosting service that makes data and code publicly available on the web, which allows team collaboration and allow others to contribute to the repo.
+Git 是一个用于追踪代码变更的软件（也就是版本控制）。GitHub 是一个 Git 仓库托管服务，能够将数据和代码共享至网络上，以便团队合作以及其他人对你的仓库做贡献。
 
-Housing your Streamlit app in a GitHub repository will allow apps to be deployed to the cloud (the next challenge).
+将你的 Streamlit 应用托管至 GitHub 仓库将使其可以被部署至云端（也是我们接下来的挑战中要做的）。
 
-## Sign up for GitHub
+## 注册 GitHub 账号
 
-Firstly, sign up for a [GitHub](https://github.com/) account.
+首先，你需要注册一个 [GitHub](https://github.com/) 账号。
 
-## Create a GitHub repository
+## 新建 GitHub 仓库
 
-Follow the following steps to create a GitHub repository:
-- In the top right hand corner, click on the **"+"** icon which should reveal a drop-down menu, then click on **"New repository"** (*Figure 1*).
+遵循以下步骤，新建一个 GitHub 仓库:
 
-- This should bring to a new webpage called **"Create a new repository"**. Under the **"Repository name"** field, enter a name for your repository, for example, `helloworld` (***Figure 2***).
+- 在网页右上角，点击 **"+"** 图标，在弹出的下拉列表中，点选 **"New repository"** （_图 1_）
 
-- Under the **"Initialize this repository with:"** field, tick on **"Add a README file"**.
+- 这将会跳转到一个名为 **"Create a new repository"** 的新页面。在 **"Repository name"** 字段中，输入你的仓库名字，比如 `helloworld` （**_图 2_**）
 
-- Finally, click on **"Create repository"** (Figure 3).
+- 在 **"Initialize this repository with:"** 字段中，勾选 **"Add a README file"**.
 
-Your newly created repository will be available at `https://github.com/dataprofessor/helloworld` where `dataprofessor` is the username and `helloworld` is the repository name.
+- 最后，点击 **"Create repository"** （图 3）
 
-Below is the screenshot of the newly created repo (Figure 4):
+你新创建的仓库将可以通过 `https://github.com/dataprofessor/helloworld` 访问，其中 `dataprofessor` 是用户名，而 `helloworld` 是仓库名。
 
-## Upload files to the GitHub repo
+以下是这个新建仓库的截图 （图 4）：
 
-Slightly above the file table and adjacent to the green **Code** button, click on **Add file** > **Upload files** (Figure 5).
+## 上传文件至 GitHub 仓库
 
-This will bring you to a new webpage where the central box says ***Drag files here to add them to your repository*** and **choose your files**, which you can either drag-and-drop files into this box or click on the **choose your files** link to choose files from your local computer.
+在文件列表的上方一些的位置，绿色的 **Code** 按钮边上，找到并点击 **Add file**，然后点击 **Upload files** （图 5）。
 
-Click on **Commit changes** to proceed further (Figure 6).
+这会跳转到一个新的网页，正中间的窗口写着 **_Drag files here to add them to your repository_** 和 **choose your files**，你可以通过拖拽文件或者点击 **choose your files** 来添加从本地计算机上传的文件。
+
+点击 **Commit changes** 完成后续操作 (图 6).
